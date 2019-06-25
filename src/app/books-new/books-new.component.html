@@ -1,0 +1,53 @@
+<p></p>
+<div class="container">
+  <div class="col-md-6 col-xs-12">
+  <form #f="ngForm" (ngSubmit)="onSaveBook(f.value)" *ngIf="mode==0">
+    <div class="form-group">
+      <label class="control-label">Title</label>
+      <input class="form-control" type="text" name="title" ngModel [(ngModel)]="book.title" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Author</label>
+      <input class="form-control" type="text" name="author" ngModel [(ngModel)]="book.author" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Publishing Date</label>
+      <input class="form-control" type="date" name="publishingDate" ngModel [(ngModel)]="book.publishingDate" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Price</label>
+      <input class="form-control" type="number" name="price" ngModel [(ngModel)]="book.price" required>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Available</label>
+      <input class="checkbox" type="checkbox" name="available" ngModel [(ngModel)]="book.available"  required >
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+    <div *ngIf="mode==1">
+      <div class="panel panel-default">
+        <div class="panel-heading">New Book Added Successfunly</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>ID: <strong>{{book._id}}</strong></label>
+          </div>
+          <div class="form-group">
+            <label>Title: <strong>{{book.title}}</strong> </label>
+          <div class="form-group">
+            <label>Author:  <strong>{{book.author}}</strong></label>
+          </div>
+          <div class="form-group">
+            <label>Pub Date:  <strong>{{book.publishingDate}}</strong></label>
+          </div>
+          <div class="form-group">
+            <label>Price:  <strong>{{book.price}}</strong> </label>
+          </div>
+          <div class="form-group">
+            <label>Available: <strong>{{book.available}}</strong></label>
+          </div>
+          <button class="btn btn-success" (click)="onNewBook()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

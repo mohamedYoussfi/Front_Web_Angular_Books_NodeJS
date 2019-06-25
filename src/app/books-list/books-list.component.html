@@ -1,0 +1,35 @@
+<p></p>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Books List</div>
+    <div class="panel-body" *ngIf="books">
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+        <div class="form-group">
+          <label>Key word:</label>
+          <input type="text" name="keyword" ngModel [(ngModel)]="keyword">
+          <button type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </form>
+      <table class="table">
+        <tr>
+          <th>Title</th><th>Author</th><th>Price</th><th>Pub Date</th><th>Available</th>
+        </tr>
+        <tr *ngFor="let book of books.docs">
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.price}}</td>
+          <td>{{book.publishingDate}}</td>
+          <td>{{book.available}}</td>
+          <td>{{book.quantity}}</td>
+        </tr>
+      </table>
+      <ul class="nav nav-pills">
+        <li [ngClass]="((i+1)==currentPage)?'active':''" *ngFor="let page of pages; let i=index">
+          <a class="clickable" (click)="onPageBooks(i)">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
